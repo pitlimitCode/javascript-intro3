@@ -10,6 +10,8 @@ const getMonth = (callback) => {
     }
   }, 4000);
 };
+console.log('~~~~~ SOAL NOMOR 2: ~~~~~');
+console.log('');
 
 const mapMethod = (nol, months) =>
   new Map(months.forEach((month) => console.log(month)));

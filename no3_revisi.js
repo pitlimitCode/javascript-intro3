@@ -1,4 +1,6 @@
 // 3. Buat 2 program bebas menggunakan promise seperti soal nomor 1
+console.log('~~~~~ SOAL NOMOR 3: ~~~~~');
+console.log('');
 
 // PROGRAM BEBAS 1
 const timePres = (timer, youStop) => {
@@ -13,7 +15,7 @@ const timePres = (timer, youStop) => {
       ys = `${nD.getHours()}:${nD.getMinutes()}:${nD.getSeconds() + youStop}`;
     }
 
-    // batas waktu presentase / timer\
+    // batas waktu presentase
     let tmr;
     if (nD.getSeconds() + timer > 59) {
       tmr = `${nD.getHours()}:${nD.getMinutes() + 1}:${nD.getSeconds() + timer - 60 }`;
@@ -54,46 +56,44 @@ const timePres = (timer, youStop) => {
     }, 1000);
   });
 };
+// jalankan program bebas 1
+{
+  timePres(5, 10) // <<< INPUT !!! ~ (timer, youStop) = (10,5)
+    .then((res) =>
+      console.log(`
+    SELESAI.
+    ANDA TELAH PRESENTASE SELAMA ${res} detik.
+  `)
+    )
+    .catch((err) =>
+      console.log(`
+    SELESAI. TAPI MELEBIHI BATAS WAKTU 
+    PRESENTASE SEBANYAK ${err} DETIK.
+  `)
+    );
+}
 
-// // PERINTAH PROGRAM BEBAS 1
-// timePres(5, 10) // (timer, youStop) = (10,5)
-//   .then((res) =>
-//     console.log(`
-//   SELESAI.
-//   ANDA TELAH PRESENTASE SELAMA ${res} detik.
-// `)
-//   )
-//   .catch((err) =>
-//     console.log(`
-//   SELESAI. TAPI MELEBIHI BATAS WAKTU 
-//   PRESENTASE SEBANYAK ${err} detik.
-// `)
-//   );
-  
-    
+
 // PROGRAM BEBAS 2
-const diajakNgumpul = (tOf, balas) => {
-  return new Promise((resolve, reject = 100) => {
-
-    setTimeout(() => {
-
-      if (balas == null) {
-        console.log('(*Abaikan)');
-      } else if (tOf) {
-        resolve(balas / 1000);
-      } else {
-        reject(balas / 1000);
-      }
-
-    }, balas);
-
-  })
-};
-
-// // PERINTAH PROGRAM BEBAS 2
-// diajakNgumpul(true, 2000) // ( ? ~ true / false , waktu balas ~ milisecond )
-//   .then((res) => (console.log(`Membalas pesan, ${res} detik kemudian: Gaaas! (*siap-siap)`)
-//   ))
-//   .catch((err) => (console.log(`Membalas pesan, ${err} detik kemudian: Ngak. (*lanjut turu)`)
-//   ))
-//   .finally(console.log('Membaca pesan: Hmmm... (mikir)'));
+// jalankan program bebas 2
+{
+  // const diajakNgumpul = (tOf, balas) => {
+  //   return new Promise((resolve, reject = 100) => {
+  //     setTimeout(() => {
+  //       if (balas == null) {
+  //         console.log('(*Abaikan)');
+  //       } else if (tOf) {
+  //         resolve(balas / 1000);
+  //       } else {
+  //         reject(balas / 1000);
+  //       }
+  //     }, balas);
+  //   })
+  // };
+  // diajakNgumpul(false, 2000) // ( ? ~ true / false , waktu balas ~ milisecond )
+  //   .then((res) => (console.log(`Membalas pesan, ${res} detik kemudian: Gaaas! (*siap-siap)`)
+  //   ))
+  //   .catch((err) => (console.log(`Membalas pesan, ${err} detik kemudian: Ngak. (*lanjut turu)`)
+  //   ))
+  //   .finally(console.log('Membaca pesan: Hmmm... (mikir)'));
+}

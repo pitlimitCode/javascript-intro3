@@ -45,25 +45,26 @@ switch (hariIni) {
     break;
 }
 
-// cekHariKerja('minggu') // INPUTAN MANUAL !!!
-//   .then((res) => (
-//     console.log(res[0].toUpperCase() + res.substring(1) + ' adalah hari kerja. Then-Catch')
-//   ))
-//   .catch((err) => (
-//     console.log(err + '. Then-Catch')
-//   ));
+// Then-Catch : panggil function soal dan buat then-catch nya
+cekHariKerja('minggu') // INPUTAN MANUAL !!!
+  .then((res) => (
+    console.log(res[0].toUpperCase() + res.substring(1) + ' adalah hari kerja. Then-Catch')
+  ))
+  .catch((err) => (
+    console.log(err + '. Then-Catch')
+  ));
 
-// // Try-Catch 2 : panggil function soal dan buat then-catch nya
-// try{
-//   cekHariKerja('') // INPUTAN MANUAL !!!
-//   .then((res) => (
-//       console.log(res[0].toUpperCase() + res.substring(1) + ' adalah hari kerja. Try-Catch.2')
-//   ))
-//   .catch((err) => (
-//     console.log(err + '. Try-Catch.2') // Tidak bisa nge-throw ke catch-nya try
-//   ))
-// }
-// catch(err) {console.log(err)} ;
+// Try-Catch : panggil function soal dan buat then-catch nya
+try{
+  cekHariKerja('') // INPUTAN MANUAL !!!
+  .then((res) => (
+      console.log(res[0].toUpperCase() + res.substring(1) + ' adalah hari kerja. Try-Catch.2')
+  ))
+  .catch((err) => (
+    console.log(err + '. Try-Catch.2') // Tidak bisa nge-throw ke catch-nya try
+  ))
+}
+catch(err) {console.log(err)} ;
 // Try-Catch dapat langsung digunakan untuk melaporkan jika program error sesuai perintah user. Lebih cocok dipakai bersama async-await.
 // Syntax try-catch :
 // try{}
@@ -99,10 +100,8 @@ switch (hariIni) {
 }
 
 {// 3. Buat 2 program bebas menggunakan promise seperti soal nomor 1
-
   {// Program bebas 1
     const timePres = (timer, youStop) => {
-
       return new Promise((resolve, reject) => {
         setTimeout(() => {
           const dataDay = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
@@ -114,7 +113,6 @@ switch (hariIni) {
           } else {
             reject(new Error('Hari ini bukan hari kerja'));
           }
-
         }, 1000);
       })
     }
@@ -123,9 +121,7 @@ switch (hariIni) {
   {// Program bebas 2
     const diajakNgumpul = (tOf, balas) => {
       return new Promise((resolve, reject = 100) => {
-
         setTimeout(() => {
-
           if(balas == null) {
             console.log('(*Abaikan)');
           } else if (tOf){
@@ -133,9 +129,7 @@ switch (hariIni) {
           } else {
             reject(balas/1000);
           }
-          
         }, balas);
-        
       })
     }
   }

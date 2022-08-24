@@ -1,6 +1,9 @@
 import fetch from "node-fetch";
 
 // 4. Buatlah program menggunakan method fetch untuk menampilkan semua name (hanya name nya saja) dari REST API dibawah ini {https://jsonplaceholder.typicode.com/users}
+console.log('~~~~~ SOAL NOMOR 4: ~~~~~');
+console.log('');
+
 async function soalEmpat(link, req) {
   // Validasi jika '' atau tidak ada Key Object
   if (req === undefined || req === "") {
@@ -11,19 +14,22 @@ async function soalEmpat(link, req) {
       const response = await fetch(link);
       const allData = await response.json();
 
-      allData.forEach((data) => {
+      allData.forEach(data => {
+
         // req == 'all' untuk menampilkan semua data
         if (req == "all") {
           console.log(data);
         } else {
-          let cetak = data[req]; // cetak spesifik data, contoh 'data.nama'
+
+        // cetak spesifik data, contoh 'data.nama'
+          let cetak = data[req]; 
           console.log(cetak);
         }
 
-      throw err = response;
-
-      });
-    } catch (err) {console.log(err)}
+      })
+    } catch (err) {
+      console.log(err)
+    };
   }
 }
 // PERINTAH jika tidak memenuhi validasi
@@ -31,8 +37,8 @@ async function soalEmpat(link, req) {
 // soalEmpat('https://jsonplaceholder.typicode.com/users', '');
 
 // PERINTAH-perintah utama:
-// soalEmpat("https://jsonplaceholder.typicode.com/users", "name");
+soalEmpat("https://jsonplaceholder.typicode.com/users", "name");
 // soalEmpat('https://jsonplaceholder.typicode.com/users', 'company');
 // soalEmpat('https://jsonplaceholder.typicode.com/users', 'naMe');
 
-soalEmpat('https://jsonplaceholder.typicode.com/userss', 'all');
+// soalEmpat('https://jsonplaceholder.typicode.com/userss', 'all');
