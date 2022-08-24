@@ -45,41 +45,17 @@ switch (hariIni) {
     break;
 }
 
-// cekHariKerja(hariIni) // INPUTAN MANUAL !!!
+// cekHariKerja('minggu') // INPUTAN MANUAL !!!
 //   .then((res) => (
 //     console.log(res[0].toUpperCase() + res.substring(1) + ' adalah hari kerja. Then-Catch')
 //   ))
 //   .catch((err) => (
 //     console.log(err + '. Then-Catch')
 //   ));
-// // Then-Catch digunakan untuk melaporkan jika program error sesuai perintah user, setelah mendapat hasil 'resolve' atau 'reject' dari 'Promise'. Method.then dapat dibuat lebih dari sekali dengan syarat ada return dari 'Then' sebelumnya.
-// // Syntax membuat Promise 
-// // variabel = new Promise(resolve, reject) => {
-// //   if() { resolve() } else { reject() }
-// // }
-// // Syntax panggil then-catch :
-// // variabel()
-// //  .then(() => ())
-// //  .catch(() => ())
 
-// // Try-Catch 1 : ketik ulang perintah
+// // Try-Catch 2 : panggil function soal dan buat then-catch nya
 // try{
-//   let day = hariIni ;  // INPUTAN MANUAL !!!
-//   const dataDay = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
-//   let cek = dataDay.find((item) => {
-//     return item === day; // [day] atau undefined
-//   });
-//   if(cek) {
-//     console.log(cek[0].toUpperCase() + cek.substring(1) + ' adalah hari kerja. Try-Catch.1')
-//   } else {
-//     throw 'error. Try-Catch.1'; // Bisa nge-throw ke catch-nya try
-//   }
-// } 
-// catch(err) { console.log(err) };
-
-// // Try-Catch 2 : panggil function soal dan uat then-catch nya
-// try{
-//   cekHariKerja(hariIni) // INPUTAN MANUAL !!!
+//   cekHariKerja('') // INPUTAN MANUAL !!!
 //   .then((res) => (
 //       console.log(res[0].toUpperCase() + res.substring(1) + ' adalah hari kerja. Try-Catch.2')
 //   ))
@@ -88,10 +64,10 @@ switch (hariIni) {
 //   ))
 // }
 // catch(err) {console.log(err)} ;
-// // Try-Catch dapat langsung digunakan untuk melaporkan jika program error sesuai perintah user. Lebih cocok dipakai bersama async-await.
-// // Syntax try-catch :
-// // try{}
-// // catch(){}
+// Try-Catch dapat langsung digunakan untuk melaporkan jika program error sesuai perintah user. Lebih cocok dipakai bersama async-await.
+// Syntax try-catch :
+// try{}
+// catch(){}
 
 }
 
@@ -119,44 +95,103 @@ switch (hariIni) {
 // );
 
 // getMonth(mapMethod);
+
 }
 
 {// 3. Buat 2 program bebas menggunakan promise seperti soal nomor 1
-// Program bebas 1
-const cekHariKerja2 = (day) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const dataDay = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
-      let cek = dataDay.find((item) => {
-        return item === day;
-      })
-      if(cek){
-        resolve(cek);
-      } else {
-        reject(new Error('Hari ini bukan hari kerja'));
-      }
-    }, 3000)
-  })
-}
-// console.log(cekHariKerja2);
 
-// Program bebas 2
-const cekHariKerja3 = (day) => {
+{// Program bebas 1
+const timePres = (timer, youStop) => {
+
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      const dataDay = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
-      let cek = dataDay.find((item) => {
-        return item === day;
-      })
-      if(cek){
-        resolve(cek);
-      } else {
-        reject(new Error('Hari ini bukan hari kerja'));
+    
+    // waktu berhenti presentase
+
+    const ys = new Date().getHours() + ":" 
+              + new Date().getMinutes() + ":" 
+              + (new Date().getSeconds() + (youStop)); // youstop
+    
+    // batas waktu presentase
+    const tmr = new Date().getHours() + ":" 
+              + new Date().getMinutes() + ":" 
+              + (new Date().getSeconds() + (timer)); // timer
+
+    // setInterval, memproses dengan jarak/interval waktu
+    let setIntervalFunct = setInterval(() => {
+      // method untuk menghentikan setinterval
+      function timeStopFunc() {  clearInterval(setIntervalFunct); }
+      
+      // waktu yang berlangsung untuk ditampilkan
+      let count = new Date().getHours() + ":" 
+                + new Date().getMinutes() + ":" 
+                + new Date().getSeconds(); 
+      console.log(count);
+
+      // keterangan di console saat melebihi waktu presentase
+      if (count == tmr) {
+        console.log(`
+        MELEWATI BATAS WAKTU ...
+        `);
       }
-    }, 3000)
+      
+      // resolve dari Promise
+      if(count == ys && count < tmr){
+        resolve(youStop); // ke resolve ke .then
+        setTimeout(timeStopFunc, count);
+      }
+      
+      // reject dari Promise
+      if (count == ys && count > tmr) {
+        reject((youStop-timer)); // ke reject ke .catch
+        setTimeout(timeStopFunc);
+      }
+
+    }, 1000);
   })
+};
+
+// // timePres = (timer, youStop);
+// // timePres(10,5)
+// timePres(5,10)
+//   .then((res)=>(console.log(`
+//   SELESAI.
+//   ANDA TELAH PRESENTASE SELAMA ${res} detik.
+// `)))
+//   .catch((err)=>(console.log(`
+//   SELESAI. TAPI MELEBIHI BATAS WAKTU 
+//   PRESENTASE SEBANYAK ${err} detik.
+// `)));
+
 }
-// console.log(cekHariKerja3);
+  
+{// Program bebas 2
+const diajakNgumpul = (tOf, balas) => {
+  return new Promise((resolve, reject = 100) => {
+
+    setTimeout(() => {
+
+      if(balas == null) {
+        console.log('(*Abaikan)');
+      } else if (tOf){
+        resolve(balas/1000);
+      } else {
+        reject(balas/1000);
+      }
+      
+    }, balas);
+    
+  })
+};
+
+// diajakNgumpul(false, 4000) // ( true/false , milisecond )
+//   .then((res) =>  ( console.log('Membalas pesan, ' + res + ' detik kemudian: Gaaas! (*siap-siap)')
+//   ))
+//   .catch((err) => ( console.log('Membalas pesan, ' + err + ' detik kemudian: Ngak. (*lanjut turu)')
+//   ))
+//   .finally( console.log('Membaca pesan: Hmmm... (mikir)'));
+
+}
+  
 }
 
 {// 4. Buatlah program menggunakan method fetch untuk menampilkan semua name (hanya name nya saja) dari REST API dibawah ini {https://jsonplaceholder.typicode.com/users}
@@ -180,7 +215,7 @@ async function restAPI(link, req) {
   }
 }
 // Perintah jika tidak memenuhi validasi
-// restAPI('https://jsonplaceholder.typicode.com/users');
+// restAPI('https://jsonplaceholder.ty picode.com/users');
 // restAPI('https://jsonplaceholder.typicode.com/users', '');
 
 // Perintah-perintah :
