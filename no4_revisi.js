@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
 
 // 4. Buatlah program menggunakan method fetch untuk menampilkan semua name (hanya name nya saja) dari REST API dibawah ini {https://jsonplaceholder.typicode.com/users}
-async function restAPI(link, req) {
+async function soalEmpat(link, req) {
   // Validasi jika '' atau tidak ada Key Object
   if (req === undefined || req === "") {
     console.log("Tidak ada Key Object yang dimasukkan.");
@@ -27,12 +27,12 @@ async function restAPI(link, req) {
   }
 }
 // PERINTAH jika tidak memenuhi validasi
-// restAPI('https://jsonplaceholder.typicode.com/users');
-// restAPI('https://jsonplaceholder.typicode.com/users', '');
+// soalEmpat('https://jsonplaceholder.typicode.com/users');
+// soalEmpat('https://jsonplaceholder.typicode.com/users', '');
 
 // PERINTAH-perintah utama:
-// restAPI("https://jsonplaceholder.typicode.com/users", "name");
-// restAPI('https://jsonplaceholder.typicode.com/users', 'company');
-// restAPI('https://jsonplaceholder.typicode.com/users', 'naMe');
+// soalEmpat("https://jsonplaceholder.typicode.com/users", "name");
+// soalEmpat('https://jsonplaceholder.typicode.com/users', 'company');
+// soalEmpat('https://jsonplaceholder.typicode.com/users', 'naMe');
 
-restAPI('https://jsonplaceholder.typicode.com/userss', 'all');
+soalEmpat('https://jsonplaceholder.typicode.com/userss', 'all');

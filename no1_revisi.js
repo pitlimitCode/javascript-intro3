@@ -110,24 +110,20 @@ switch (hariIni) {
 // catch (err) { console.log(err) };
 
 
-/*
+// Then-Catch digunakan untuk melaporkan jika program error sesuai perintah user,
+// setelah mendapat hasil 'resolve' atau 'reject' dari 'Promise'.
+// Method.then dapat dibuat lebih dari sekali dengan syarat ada return dari 'Then' sebelumnya.
+// Syntax membuat Promise:
+// variabel = new Promise(resolve, reject) => {
+//   if() { resolve() } else { reject() }
+// }
+// Syntax menampilkannya ke then-catch :
+// variabel()
+//  .then(() => ())
+//  .catch(() => ())
 
-Then-Catch digunakan untuk melaporkan jika program error sesuai perintah user,
-setelah mendapat hasil 'resolve' atau 'reject' dari 'Promise'.
-Method.then dapat dibuat lebih dari sekali dengan syarat ada return dari 'Then' sebelumnya.
-Syntax membuat Promise:
-variabel = new Promise(resolve, reject) => {
-  if() { resolve() } else { reject() }
-}
-Syntax menampilkannya ke then-catch :
-variabel()
- .then(() => ())
- .catch(() => ())
-
-Try-Catch dapat langsung digunakan untuk melaporkan jika program error sesuai perintah user.
-Lebih cocok dipakai bersama async-await.
-Syntax try-catch :
-try{}
-catch(){}
-
-*/
+// Try-Catch dapat langsung digunakan untuk melaporkan jika program error sesuai perintah user.
+// Lebih cocok dipakai bersama async-await.
+// Syntax try-catch :
+// try{}
+// catch(){}

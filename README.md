@@ -1,54 +1,40 @@
-# Week 2 - Javascript Intro 3
 
-file tugas sebelum revisi:  
-js_intro3.js  
+## SOAL NOMOR 1
+Buatlah sambungan program menggunakan then catch dan juga try catch untuk mengecek hari kerja dari kode Asynchronous dibawah dan jelaskan penggunaan then catch dan try catch dengan memberikan komentar di bawahnya:
+const cekHariKerja = (day) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      const dataDay = ["senin", "selasa", "rabu", "kamis", "jumat"];
+      let cek = dataDay.find((item) => {
+        return item === day;
+      });
+      if (cek) {
+        resolve(cek);
+      } else {
+        reject(new Error("Hari ini bukan hari kerja"));
+      }
+    }, 3000);
+  });
+};
 
-file tugas setelah revisi:  
-no1_revisi.js  
-no2_revisi.js  
-no3_revisi.js  
-no4_revisi.js  
-  
-running code di terminal:  
-node <file js>  
+## SOAL NOMOR 2
+Buat program menggunakan callback function untuk melanjutkan dan menampilkan semua bulan menggunakan method map
+const getMonth = (callback) => {
+  setTimeout(() => {
+    let error = false;
+    let month = ["January", "February", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"];
+    if (!error) {
+      callback(null, month);
+    } else {
+      callback(new Error("Sorry Data Not Found"), []);
+    }
+  }, 4000);
+};
 
-## SOAL NOMOR 1:  
-Buat dan jelaskanlah 10 method bawaan JavaScript (Built-in Functions) beserta contoh penggunaannya (kecuali : split,   reverse, join, foreach, map)
-  
-## SOAL NOMOR 2:  
-Buatlah program searching nama yang dapat dibatasi jumlah outputnya yang menerapkan  callback function dengan data   sebagai berikut:
-const name = [  
-"Abigail", "Alexandra", "Alison",  
-"Amanda", "Angela", "Bella",  
-"Carol", "Caroline", "Carolyn",  
-"Deirdre", "Diana", "Elizabeth",  
-"Ella", "Faith", "Olivia", "Penelope"]  
-  
-Contoh:  
-searchName(“an”, 3, callback)  
-  
-Output:   
-[“Alexandra”,”Amanda”,”Angela”]  
-  
-## SOAL NOMOR 3:  
-Buatlah fungsi yang memiliki parameter nilaiAwal (number) dan nilaiAkhir (number), serta dataArray (array).   
-Fungsi tersebut memiliki validasi nilaiAwal < nilaiAkhir dan jumlah data dalam dataArray harus lebih dari 5.  
-Fungsi tersebut akan mencari data didalam dataArray yang memiliki nilai diantara nilaiAwal dan nilaiAkhir, mengurutkan   hasil pencarian dan menampilkannya ke layar/console.
-  
-Contoh :  
-   
-SeleksiNilai(5, 20 , [2, 25, 4, 14, 17, 30, 8])  
-Output:  
-[8, 14, 17]  
-  
-SeleksiNilai(15, 3 , [2, 25, 4, 14, 17, 30, 8])  
-Output:  
-“Nilai akhir harus lebih besar dari nilai awal”  
-  
-SeleksiNilai(5, 17 , [2, 25, 4])  
-Output:  
-“Jumlah angka dalam dataArray harus lebih dari 5”  
-  
-SeleksiNilai(5, 17 , [2, 25, 4, 1, 30, 18])  
-Output:  
-“Nilai tidak ditemukan”  
+
+## SOAL NOMOR 3
+Buatlah 2 program bebas dengan menggunakan promise seperti soal nomor 1
+
+## SOAL NOMOR 4
+Buatlah program menggunakan method fetch untuk menampilkan semua name (hanya name nya saja) dari REST API dibawah ini
+https://jsonplaceholder.typicode.com/users
